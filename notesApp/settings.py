@@ -79,7 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'notesApp.wsgi.application'
-ASGI_APPLICATION = 'notesApp.routing.application'
+ASGI_APPLICATION = 'notesApp.asgi.application'
 
 
 
