@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+
+    rds:
+        image: redis
+
+    backend:
+        build: ./backend
+        command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        volumes:
+            - ./backend:/backend
+        ports:
+            - "8000:8000"
+        depends_on:
+            - rds
+
+    frontend:
+        build: ./frontend
+        command: ["npm", "start"]
+        volumes:
+            - ./frontend:/frontend
+            - ./frontend/node_modules:/frontend/node_modules
+        ports:
+            - "3000:3000"
